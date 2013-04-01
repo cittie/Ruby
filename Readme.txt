@@ -1,1 +1,1 @@
-¡°Learn Ruby The hard way¡± exersice.
+'Learn Ruby The hard way' exersices.
