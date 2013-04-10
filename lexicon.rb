@@ -5,22 +5,19 @@ class Lexicon
   Pair = Struct.new(:token, :word)
   
   def initialize()
-    @result = []
-  end
-  
-  def scan(sentence)
-    
-    @words = sentence.split()
-    
     @directions = ['north', 'south', 'west', 'east', 'up', 'down', 'left', 'right']
     @verbs = ['go', 'kill', 'eat']
     @stops = ['the', 'in', 'of', 'from', 'at', 'it']
     @nouns = ['door', 'bear', 'princess', 'cabinet']
+  end
+  
+  def scan(sentence)
     
-    @result = [] #Why can't I initialize result? Strange...
+    @result = []
     
-    @words.each { 
-      |word|
+    @words = sentence.split()
+        
+    @words.each {|word|
       if directions.include?(word)
         @result << Pair.new(:direction, word)
       elsif verbs.include?(word)
@@ -36,7 +33,7 @@ class Lexicon
       end      
     }
     
-    @result
+    return @result
   end
   
 end
