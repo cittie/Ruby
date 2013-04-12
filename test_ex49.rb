@@ -55,23 +55,25 @@ class Ex49Tests < Test::Unit::TestCase
 	def test_parse_subject()
 		subject_1 = @@lexicon.scan("go to the north")
 		result_1 = parse_subject(subject_1, Pair.new(:noun, 'player'))
+		#expected = Sentence.new(Pair.new(:noun, 'player'), Pair.new(:verb, 'go'), Pair.new(:direction, 'north'))
 		assert_equal(['player', 'go', 'north'], [result_1.subject, result_1.verb, result_1.object])
- 
-#		subject_2 = @@lexicon.scan("princess kill the bear")
-#	  subject_shift = subject_2.shift
-#   result_2 = parse_subject(subject_2, subject_shift)
+		 
+		subject_2 = @@lexicon.scan("princess kill the bear")
+	  subject_shift = subject_2.shift
+    result_2 = parse_subject(subject_2, subject_shift)
+    #expected = Sentence.new(Pair.new(:noun, 'princess'), Pair.new(:verb, 'kill'), Pair.new(:noun, 'bear'))
+    assert_equal(['princess', 'kill', 'bear'], [result_2.subject, result_2.verb, result_2.object])
 	end
-=begin	
+	
 	def test_parse_sentence()
 	  sentence_1 = @@lexicon.scan("go to the north")
     result_1 = parse_sentence(sentence_1)
-    assert_equal('player', result_1.subject)
-    assert_equal('go', result_1.verb)
-    assert_equal('north', result_1.object)
-		  
+    assert_equal(['player', 'go', 'north'], [result_1.subject, result_1.verb, result_1.object])
+    		  
 		sentence_2 = @@lexicon.scan("princess kill the bear")
-		target_2 = Sentence.new(Pair.new(:noun, 'princess'), Pair.new(:verb, 'kill'), Pair.new(:noun, 'bear'))
-		assert_equal(target_2, parse_sentence(sentence_2))
+		result_2 = parse_sentence(sentence_2)
+		#expect_2 = Sentence.new(Pair.new(:noun, 'princess'), Pair.new(:verb, 'kill'), Pair.new(:noun, 'bear'))
+		assert_equal(['princess', 'kill', 'bear'], [result_2.subject, result_2.verb, result_2.object])
 		
     no_verb = @@lexicon.scan("left in door")
     no_object = @@lexicon.scan("kill the eat")
@@ -81,7 +83,7 @@ class Ex49Tests < Test::Unit::TestCase
       		
 		incorrect.each {
 		|x|
-		  assert_raise( ParseError, "Must start with subject, object, or verb not: #{start}"){parse_sentence(x)}}
+		  assert_raise( ParseError, "Must start with subject, object, or verb not: #{x.first}"){parse_sentence(x)}}
 	end
-=end	
+	
 end

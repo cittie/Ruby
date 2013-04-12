@@ -6,6 +6,8 @@ end
 
 class Sentence
   
+  attr_reader :subject, :verb, :object
+  
   def initialize(subject, verb, object)
 	# Pair.new(:noun, "princess") is taken.
 	@subject = subject.word
