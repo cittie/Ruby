@@ -7,7 +7,7 @@ class Lexicon
   def initialize()
     @directions = ['north', 'south', 'west', 'east', 'up', 'down', 'left', 'right']
     @verbs = ['go', 'kill', 'eat']
-    @stops = ['the', 'in', 'of', 'from', 'at', 'it']
+    @stops = ['the', 'in', 'of', 'from', 'at', 'it', 'to']
     @nouns = ['door', 'bear', 'princess', 'cabinet']
   end
   
